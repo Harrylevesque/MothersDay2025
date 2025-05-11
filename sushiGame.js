@@ -15,7 +15,7 @@ Scoring:
 - Incorrect ingredients or delays will reduce your score.
 
 Winning:
-- Reach 200 points to win the game.
+- Reach 75 points to win the game.
 
 Good luck and happy sushi making!`);
 
@@ -35,7 +35,7 @@ Good luck and happy sushi making!`);
     const columnsContainer = document.getElementById('columns-container');
     const scoreElement = document.getElementById('score');
     let score = 0;
-    const winningScore = 200; // Winning score
+    const winningScore = 75; // Winning score
 
     const orders = [
         { id: 1, text: "California Roll (Rice, Nori, Crab, Avocado, Cucumber)", ingredients: ["Rice", "Nori", "Crab", "Avocado", "Cucumber"], prepTime: 5000 },
