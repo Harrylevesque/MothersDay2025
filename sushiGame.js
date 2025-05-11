@@ -25,7 +25,6 @@ Winning:
 - Reach 75 points to win the game.
 
 Good luck and happy sushi making!`);
-}
 
     const gameArea = document.getElementById('game-area');
     gameArea.className = 'game-area-active'; // Apply a CSS class for consistent styling
@@ -56,16 +55,6 @@ Good luck and happy sushi making!`);
         { id: 8, text: "Dragon Roll (Rice, Nori, Eel, Avocado, Cucumber, Eel Sauce)", ingredients: ["Rice", "Nori", "Eel", "Avocado", "Cucumber", "Eel Sauce"], prepTime: 6000 },
         { id: 9, text: "Philadelphia Roll (Rice, Nori, Salmon, Cream Cheese, Cucumber)", ingredients: ["Rice", "Nori", "Salmon", "Cream Cheese", "Cucumber"], prepTime: 5000 },
         { id: 10, text: "Spider Roll (Rice, Nori, Soft Shell Crab, Avocado, Cucumber)", ingredients: ["Rice", "Nori", "Soft Shell Crab", "Avocado", "Cucumber"], prepTime: 6000 },
-        { id: 11, text: "Yellowtail Roll (Rice, Nori, Yellowtail, Scallion)", ingredients: ["Rice", "Nori", "Yellowtail", "Scallion"], prepTime: 4000 },
-        { id: 12, text: "Cucumber Roll (Rice, Nori, Cucumber)", ingredients: ["Rice", "Nori", "Cucumber"], prepTime: 3000 },
-        { id: 13, text: "Avocado Roll (Rice, Nori, Avocado)", ingredients: ["Rice", "Nori", "Avocado"], prepTime: 3000 },
-        { id: 14, text: "Tuna Nigiri (Rice, Tuna)", ingredients: ["Rice", "Tuna"], prepTime: 3000 },
-        { id: 15, text: "Salmon Sashimi (Salmon)", ingredients: ["Salmon"], prepTime: 2000 },
-        { id: 16, text: "Tuna Sashimi (Tuna)", ingredients: ["Tuna"], prepTime: 2000 },
-        { id: 17, text: "Eel Nigiri (Rice, Eel, Eel Sauce)", ingredients: ["Rice", "Eel", "Eel Sauce"], prepTime: 4000 },
-        { id: 18, text: "Shrimp Nigiri (Rice, Shrimp)", ingredients: ["Rice", "Shrimp"], prepTime: 3000 },
-        { id: 19, text: "Soft Shell Crab Roll (Rice, Nori, Soft Shell Crab, Avocado)", ingredients: ["Rice", "Nori", "Soft Shell Crab", "Avocado"], prepTime: 5000 },
-        { id: 20, text: "Tempura Roll (Rice, Nori, Shrimp Tempura, Avocado, Eel Sauce)", ingredients: ["Rice", "Nori", "Shrimp Tempura", "Avocado", "Eel Sauce"], prepTime: 6000 },
     ];
 
     const ingredients = [
@@ -190,13 +179,13 @@ Good luck and happy sushi making!`);
             column.startTime = null;
             document.getElementById(`orders-list-${columnId}`).innerHTML = "";
             scoreElement.textContent = score;
-    
+
             if (score >= winningScore) {
-                alert("Congratulations! You've reached 200 points and won the game!");
+                alert("Congratulations! You've reached 75 points and won the game!");
                 resetGame();
                 return;
             }
-    
+
             addOrderToColumn(column);
         } else {
             alert(`Incorrect ingredients in Column ${columnId}! Try again.`);
