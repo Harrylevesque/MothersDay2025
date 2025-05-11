@@ -143,11 +143,11 @@ function startGame1() {
         if (column.currentOrder && ovenIngredients === column.currentOrder.ingredients.sort().join(",")) {
             const deliveryTime = (Date.now() - column.startTime) / 1000; // Calculate time in seconds
             let points = 10; // Base points
-            if (deliveryTime <= 3) {
+            if (deliveryTime <= 10) {
                 points += 20; // High bonus for very fast delivery
-            } else if (deliveryTime <= 6) {
+            } else if (deliveryTime <= 20) {
                 points += 10; // Moderate bonus for fast delivery
-            } else if (deliveryTime <= 10) {
+            } else if (deliveryTime <= 30) {
                 points += 5; // Small bonus for acceptable delivery time
             } else {
                 points -= Math.min(10, Math.floor((deliveryTime - 10) / 2)); // Higher penalty for delays
