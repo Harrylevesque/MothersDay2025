@@ -15,7 +15,7 @@ function startGame1() {
     const columnsContainer = document.getElementById('columns-container');
     const scoreElement = document.getElementById('score');
     let score = 0;
-    const winningScore = 100; // Updated winning score
+    const winningScore = 45; // Updated winning score
 
     const orders = [
         { id: 1, text: "Cake (Flour, Sugar, Eggs)", ingredients: ["Flour", "Sugar", "Eggs"], cookTime: 5000 },
