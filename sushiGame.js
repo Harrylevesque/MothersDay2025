@@ -161,14 +161,16 @@ Good luck and happy sushi making!`);
         if (column.currentOrder && prepIngredients === column.currentOrder.ingredients.sort().join(",")) {
             const deliveryTime = (Date.now() - column.startTime) / 1000; // Calculate time in seconds
             let points = 10; // Base points
-            if (deliveryTime <= 3) {
+            if (deliveryTime <= 10) {
                 points += 20; // High bonus for very fast delivery
-            } else if (deliveryTime <= 6) {
-                points += 10; // Moderate bonus for fast delivery
-            } else if (deliveryTime <= 10) {
-                points += 5; // Small bonus for acceptable delivery time
+            } else if (deliveryTime <= 20) {
+                points += 15; // Moderate bonus for fast delivery
+            } else if (deliveryTime <= 30) {
+                points += 10; // Small bonus for acceptable delivery time
+            } else if (deliveryTime <= 40) {
+                points += 5; // Minimal bonus for slower delivery
             } else {
-                points -= Math.min(10, Math.floor((deliveryTime - 10) / 2)); // Higher penalty for delays
+                points -= Math.min(5, Math.floor((deliveryTime - 40) / 10)); // Smaller penalty for delays
             }
             points = Math.max(0, points); // Ensure points don't go negative
             score += points; // Add points to the score
@@ -180,13 +182,13 @@ Good luck and happy sushi making!`);
             column.startTime = null;
             document.getElementById(`orders-list-${columnId}`).innerHTML = "";
             scoreElement.textContent = score;
-
+    
             if (score >= winningScore) {
                 alert("Congratulations! You've reached 200 points and won the game!");
                 resetGame();
                 return;
             }
-
+    
             addOrderToColumn(column);
         } else {
             alert(`Incorrect ingredients in Column ${columnId}! Try again.`);
