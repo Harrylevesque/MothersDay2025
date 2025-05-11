@@ -1,0 +1,54 @@
+body {
+    background-color: #ffffff; /* Dark gray background */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #ff66b3; /* Pink text color */
+}
+
+.game-container {
+    background-color: #ffffff; /* Slightly lighter dark gray */
+    border: 2px solid #ff66b3; /* Pink border */
+    border-radius: 10px;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    text-align: center;
+    outline: 3px solid #ff99cc; /* Lighter pink outline */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Darker shadow */
+}
+
+#game-area {
+    display: none; /* Hide the game area initially */
+    margin-top: 20px;
+    border: 2px dashed #ff66b3; /* Pink dashed border */
+    background-color: #ffffff; /* Ensure the canvas has a white background */
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+}
+
+.game-area-active {
+    display: block; /* Make the game area visible when active */
+}
+
+button {
+    background-color: #ff66b3; /* Pink button background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 2px; /* Add 2px margin between buttons */
+}
+
+button:hover {
+    background-color: #e0559c; /* Slightly darker pink on hover */
+}
+
+canvas {
+    border: 1px solid #ff66b3; /* Pink border for canvas */
+    margin-top: 20px;
+    background-color: #ffffff; /* Match container background */
+}

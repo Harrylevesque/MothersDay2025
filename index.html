@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Collection</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #2a2a2a;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .game-container {
+            background-color: #ffffff;
+            border: 2px solid #ff66b3;
+            border-radius: 10px;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #game-area {
+            display: none; /* Hide the game area initially */
+            margin-top: 20px;
+            border: 2px solid rgb(158, 158, 158);
+            background-color: #ffffff; /* Ensure the canvas has a white background */
+            border-radius: 20px;
+        }
+
+        select, button {
+            background-color: #ff66b3;
+            color: #2a2a2a;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        select {
+            width: 200px;
+            text-align: center;
+        }
+
+        button:hover, select:hover {
+            background-color: #e0559c;
+        }
+    </style>
+</head>
+<body data-game="">
+    <div class="game-container">
+        <h1>Game Collection</h1>
+        <p>Select a game from the dropdown menu and click "Load Game".</p>
+        <div>
+            <select id="game-selector">
+                <option value="" disabled selected>Select a game</option>
+                <option value="5">Game 1</option>
+                <option value="4">Game 2</option>
+                <option value="3">Game 3</option>
+                <option value="2">Game 4</option>
+                <option value="1">Game 5</option>
+                <option value="0">Game 6</option>
+            </select>
+            <button id="load-game-button">Load Game</button>
+        </div>
+        <div id="game-area"></div>
+    </div>
+    <script>
+        const gameScripts = [
+            "bakeryGame.js",       // Game 1
+            "beachGame.js",        // Game 2
+            "gelatoGame.js",       // Game 3
+            "catPicturesGame.js",  // Game 4
+            "watercolorPaintingGame.js", // Game 5
+            "cocoaPuffsGame.js"    // Game 6
+        ];
+
+        document.getElementById('load-game-button').addEventListener('click', () => {
+            const gameSelector = document.getElementById('game-selector');
+            const selectedGameIndex = parseInt(gameSelector.value, 10);
+
+            if (!isNaN(selectedGameIndex) && selectedGameIndex >= 0 && selectedGameIndex < gameScripts.length) {
+                const gameArea = document.getElementById('game-area');
+                const body = document.body;
+
+                // Check if the game is already loaded
+                if (body.dataset.game !== gameScripts[selectedGameIndex]) {
+                    body.dataset.game = gameScripts[selectedGameIndex];
+                    gameArea.style.display = 'block';
+                    gameArea.innerHTML = ''; // Clear previous game content
+
+                    // Dynamically load the script
+                    const script = document.createElement('script');
+                    script.src = gameScripts[selectedGameIndex];
+                    script.onload = () => {
+                        const startFunction = `startGame${selectedGameIndex + 1}`;
+                        if (typeof window[startFunction] === "function") {
+                            window[startFunction]();
+                        } else {
+                            console.error(`Function ${startFunction} is not defined in ${gameScripts[selectedGameIndex]}`);
+                        }
+                    };
+                    script.onerror = () => {
+                        console.error(`Failed to load script: ${gameScripts[selectedGameIndex]}`);
+                    };
+                    document.body.appendChild(script);
+                }
+            } else {
+                alert("Please select a valid game from the dropdown menu.");
+            }
+        });
+    </script>
+</body>
+</html>
