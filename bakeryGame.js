@@ -1,4 +1,24 @@
 function startGame1() {
+    alert(`Welcome to the Bakery Game!
+
+Objective:
+- Fulfill customer orders by selecting the correct ingredients, cooking them, and delivering the order.
+
+How to Play:
+1. Check the order displayed in the "Order" section of each column.
+2. Click on the ingredients listed in the order to add them to the oven.
+3. Click "Cook" to start cooking the ingredients.
+4. Once cooking is complete, click "Deliver" to deliver the order.
+
+Scoring:
+- Deliver orders quickly to earn more points.
+- Incorrect ingredients or delays will reduce your score.
+
+Winning:
+- Reach 200 points to win the game.
+
+Good luck and happy baking!`);
+
     const gameArea = document.getElementById('game-area');
     gameArea.className = 'game-area-active'; // Apply a CSS class for consistent styling
 

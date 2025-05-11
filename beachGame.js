@@ -1,4 +1,24 @@
 function startGame2() {
+    alert(`Welcome to Sandcastle Defense!
+
+Objective:
+- Protect your sandcastle from incoming crabs for 1.5 minutes.
+
+How to Play:
+- Use your mouse to aim the catapult.
+- Click to shoot rocks at the crabs.
+- Crabs will spawn from the tide and move toward your sandcastle.
+- If a crab reaches the sandcastle, it will deal damage.
+- The tide will rise over time, making it harder to defend.
+
+Winning:
+- Survive the full 1.5 minutes to win.
+
+Losing:
+- If your sandcastle's health drops to 0, the game is over.
+
+Good luck and have fun!`);
+
     const gameArea = document.getElementById('game-area');
     gameArea.style.display = 'block'; // Ensure the game area is visible
     gameArea.style.border = '2px solid #ff66b3'; // Add a pink border

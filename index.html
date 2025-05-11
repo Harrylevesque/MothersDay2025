@@ -65,6 +65,7 @@
                 <option value="2">Game 4</option>
                 <option value="1">Game 5</option>
                 <option value="0">Game 6</option>
+                <option value="6">Game 7</option>
             </select>
             <button id="load-game-button">Load Game</button>
         </div>
@@ -77,7 +78,8 @@
             "gelatoGame.js",       // Game 3
             "catPicturesGame.js",  // Game 4
             "watercolorPaintingGame.js", // Game 5
-            "cocoaPuffsGame.js"    // Game 6
+            "cocoaPuffsGame.js",   // Game 6
+            "sushiGame.js"         // Game 7
         ];
 
         document.getElementById('load-game-button').addEventListener('click', () => {
@@ -97,8 +99,10 @@
                     // Dynamically load the script
                     const script = document.createElement('script');
                     script.src = gameScripts[selectedGameIndex];
+                    console.log(`Loading script: ${script.src}`);
                     script.onload = () => {
-                        const startFunction = `startGame${selectedGameIndex + 1}`;
+                        const startFunction = selectedGameIndex === 6 ? "startGameSushi" : `startGame${selectedGameIndex + 1}`;
+                        console.log(`Attempting to call function: ${startFunction}`);
                         if (typeof window[startFunction] === "function") {
                             window[startFunction]();
                         } else {

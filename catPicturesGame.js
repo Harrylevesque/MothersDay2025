@@ -1,4 +1,19 @@
 function startGame4() {
+    alert(`Welcome to the Cat Pictures Game!
+
+Objective:
+- Find the hidden WEASEL among the cat pictures.
+
+How to Play:
+1. Click on a picture to guess if it's the WEASEL.
+2. If you click the wrong picture, the images will shuffle.
+3. Keep guessing until you find the WEASEL.
+
+Winning:
+- Click on the WEASEL to win the game.
+
+Good luck and have fun finding the WEASEL!`);
+
     const gameArea = document.getElementById('game-area');
     gameArea.style.display = 'block'; // Ensure the game area is visible
     gameArea.style.border = '2px solid #ff66b3'; // Add a pink border

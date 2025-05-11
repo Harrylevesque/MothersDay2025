@@ -1,4 +1,22 @@
 function startGame3() {
+    alert(`Welcome to Gelato Monsters!
+
+Objective:
+- Navigate the maze, avoid monsters, and collect their souls by defeating them.
+
+How to Play:
+1. Use the arrow keys to move your character.
+2. Press the spacebar to attack nearby monsters.
+3. Collect the yellow souls dropped by defeated monsters.
+
+Winning:
+- Defeat all monsters and collect their souls to win.
+
+Losing:
+- If your health drops to 0, the game is over.
+
+Good luck and stay safe in the maze!`);
+
     const gameArea = document.getElementById('game-area');
     gameArea.style.display = 'block'; // Ensure the game area is visible
     gameArea.style.border = '2px solid #ff66b3'; // Add a pink border

@@ -1,4 +1,16 @@
 function startGame5() {
+    alert(`Welcome to the Watercolor Painting Game!
+
+Objective:
+- Create beautiful watercolor art by painting on the canvas.
+
+How to Play:
+1. Select a color using the color picker.
+2. Click and drag on the canvas to paint with your selected color.
+3. Overlap colors to create new effects.
+
+Enjoy the relaxing experience of painting!`);
+
     const gameArea = document.getElementById('game-area');
     gameArea.style.display = 'block'; // Ensure the game area is visible
     gameArea.style.border = '2px solid #ff66b3'; // Add a pink border

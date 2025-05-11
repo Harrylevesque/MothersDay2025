@@ -1,4 +1,22 @@
 function startGame6() {
+    alert(`Welcome to the Cocoa Puffs Game!
+
+Objective:
+- Complete as many bowls as possible by adding milk and cocoa puffs.
+
+How to Play:
+1. Left-click on a bowl to add cocoa puffs.
+2. Right-click on a bowl to add milk.
+3. Complete the bowl by adding both milk and cocoa puffs.
+
+Winning:
+- Complete at least 40 bowls before time runs out to win.
+
+Losing:
+- If the timer reaches 0 and you haven't completed enough bowls, the game is over.
+
+Good luck and enjoy the game!`);
+
     const gameArea = document.getElementById('game-area');
     gameArea.style.display = 'block'; // Ensure the game area is visible
     gameArea.style.border = '2px solid #ff66b3'; // Add a pink border
