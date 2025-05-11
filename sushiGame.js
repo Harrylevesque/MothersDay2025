@@ -60,7 +60,12 @@ Good luck and happy sushi making!`);
         { id: 20, text: "Tempura Roll (Rice, Nori, Shrimp Tempura, Avocado, Eel Sauce)", ingredients: ["Rice", "Nori", "Shrimp Tempura", "Avocado", "Eel Sauce"], prepTime: 6000 },
     ];
 
-    const ingredients = ["Rice", "Nori", "Tuna", "Salmon", "Eel", "Avocado", "Cucumber", "Shrimp Tempura", "Eel Sauce", "Soft Shell Crab"];
+    const ingredients = [
+        "Rice", "Nori", "Tuna", "Salmon", "Eel", "Avocado", "Cucumber", 
+        "Shrimp Tempura", "Eel Sauce", "Soft Shell Crab", 
+        "Crab", "Spicy Mayo", "Carrot", "Yellowtail", "Scallion", 
+        "Cream Cheese", "Wasabi", "Pickled Ginger", "Soy Sauce", "Egg"
+    ];
 
     const columns = [
         { id: 1, currentOrder: null, prepIngredients: [], isPreparing: false, startTime: null },
