@@ -20,23 +20,7 @@ function startGame1() {
     const orders = [
         { id: 1, text: "Cake (Flour, Sugar, Eggs)", ingredients: ["Flour", "Sugar", "Eggs"], cookTime: 5000 },
         { id: 2, text: "Cookies (Flour, Butter, Sugar)", ingredients: ["Flour", "Butter", "Sugar"], cookTime: 3000 },
-        { id: 3, text: "Pie (Flour, Eggs, Butter)", ingredients: ["Flour", "Eggs", "Butter"], cookTime: 7000 },
-        { id: 4, text: "Brownies (Flour, Cocoa, Sugar, Butter)", ingredients: ["Flour", "Cocoa", "Sugar", "Butter"], cookTime: 6000 },
-        { id: 5, text: "Muffins (Flour, Sugar, Eggs, Milk)", ingredients: ["Flour", "Sugar", "Eggs", "Milk"], cookTime: 4000 },
-        { id: 6, text: "Croissant (Flour, Butter, Milk)", ingredients: ["Flour", "Butter", "Milk"], cookTime: 8000 },
-        { id: 7, text: "Donuts (Flour, Sugar, Eggs, Oil)", ingredients: ["Flour", "Sugar", "Eggs", "Oil"], cookTime: 5000 },
-        { id: 8, text: "Pancakes (Flour, Milk, Eggs, Sugar)", ingredients: ["Flour", "Milk", "Eggs", "Sugar"], cookTime: 3000 },
-        { id: 9, text: "Waffles (Flour, Milk, Eggs, Butter)", ingredients: ["Flour", "Milk", "Eggs", "Butter"], cookTime: 4000 },
-        { id: 10, text: "Tart (Flour, Butter, Sugar, Eggs)", ingredients: ["Flour", "Butter", "Sugar", "Eggs"], cookTime: 7000 },
-        { id: 11, text: "Eclairs (Flour, Butter, Eggs, Cream)", ingredients: ["Flour", "Butter", "Eggs", "Cream"], cookTime: 6000 },
-        { id: 12, text: "Macarons (Almond, Sugar, Eggs)", ingredients: ["Almond", "Sugar", "Eggs"], cookTime: 5000 },
-        { id: 13, text: "Cheesecake (Cheese, Sugar, Eggs, Butter)", ingredients: ["Cheese", "Sugar", "Eggs", "Butter"], cookTime: 8000 },
-        { id: 14, text: "Cupcakes (Flour, Sugar, Eggs, Butter)", ingredients: ["Flour", "Sugar", "Eggs", "Butter"], cookTime: 4000 },
-        { id: 15, text: "Bagels (Flour, Sugar, Yeast, Water)", ingredients: ["Flour", "Sugar", "Yeast", "Water"], cookTime: 6000 },
-        { id: 16, text: "Pretzels (Flour, Butter, Yeast, Salt)", ingredients: ["Flour", "Butter", "Yeast", "Salt"], cookTime: 7000 },
-        { id: 17, text: "Baguette (Flour, Water, Yeast, Salt)", ingredients: ["Flour", "Water", "Yeast", "Salt"], cookTime: 9000 },
-        { id: 18, text: "Scones (Flour, Butter, Sugar, Milk)", ingredients: ["Flour", "Butter", "Sugar", "Milk"], cookTime: 5000 },
-        { id: 19, text: "Churros (Flour, Sugar, Butter, Oil)", ingredients: ["Flour", "Sugar", "Butter", "Oil"], cookTime: 4000 },
+        // Add more orders as needed...
     ];
 
     const ingredients = ["Flour", "Sugar", "Eggs", "Butter", "Milk", "Oil", "Cocoa", "Cream", "Cheese", "Almond", "Yeast", "Water", "Salt"];
@@ -55,19 +39,9 @@ function startGame1() {
         columnDiv.style.width = '200px';
 
         columnDiv.innerHTML = `
-            <style>
-                game-area {
-                    color: rgb(243, 243, 243);
-                    background-color: rgb(68, 68, 68);
-                    border: 1px solid rgb(255, 255, 255);
-                    border-radius: 20px;
-                }
-            </style>
             <div id="order-area-${column.id}">
                 <h3>Order</h3>
-                <ul id="orders-list-${column.id}">
-                    <!-- Orders will be dynamically added here -->
-                </ul>
+                <ul id="orders-list-${column.id}"></ul>
             </div>
             <div id="ingredients-area-${column.id}">
                 <h3>Ingredients</h3>
@@ -77,7 +51,7 @@ function startGame1() {
             </div>
             <div id="oven-area-${column.id}">
                 <h3>Oven</h3>
-                <div>Ingredients: <span id="oven-contents-${column.id}"></span></div>
+                <div id="oven-contents-${column.id}"></div>
                 <button class="cook-button" data-column="${column.id}">Cook</button>
                 <div id="cooking-timer-${column.id}" style="margin-top: 10px; color: green;"></div>
             </div>
@@ -102,7 +76,27 @@ function startGame1() {
     function addIngredientToOven(columnId, ingredient) {
         const column = columns.find(col => col.id === parseInt(columnId));
         column.ovenIngredients.push(ingredient);
-        document.getElementById(`oven-contents-${columnId}`).textContent = column.ovenIngredients.join(", ");
+
+        const ovenContents = document.getElementById(`oven-contents-${columnId}`);
+        ovenContents.innerHTML = column.ovenIngredients.map(ing => `
+            <span>${ing} <button class="remove-ingredient-button" data-column="${columnId}" data-ingredient="${ing}">Remove</button></span>
+        `).join(" ");
+
+        // Add event listeners for remove buttons
+        ovenContents.querySelectorAll(".remove-ingredient-button").forEach(button => {
+            button.addEventListener("click", () => {
+                removeIngredientFromOven(button.dataset.column, button.dataset.ingredient);
+            });
+        });
+    }
+
+    function removeIngredientFromOven(columnId, ingredient) {
+        const column = columns.find(col => col.id === parseInt(columnId));
+        const index = column.ovenIngredients.indexOf(ingredient);
+        if (index !== -1) {
+            column.ovenIngredients.splice(index, 1);
+            document.getElementById(`oven-contents-${columnId}`).textContent = column.ovenIngredients.join(", ");
+        }
     }
 
     function cookIngredients(columnId) {
@@ -171,7 +165,10 @@ function startGame1() {
 
             addOrderToColumn(column);
         } else {
-            alert(`Incorrect ingredients in Column ${columnId}! Try again.`);
+            score -= 5; // Deduct 5 points
+            score = Math.max(0, score); // Ensure score doesn't go negative
+            scoreElement.textContent = score;
+            alert(`Incorrect ingredients or uncooked food in Column ${columnId}! You lost 5 points.`);
         }
     }
 
