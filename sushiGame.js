@@ -14,10 +14,18 @@ Scoring:
 - Deliver orders quickly to earn more points.
 - Incorrect ingredients or delays will reduce your score.
 
+Delivery Points:
+- Delivered within 10 seconds: +20 points
+- Delivered within 20 seconds: +15 points
+- Delivered within 30 seconds: +10 points
+- Delivered within 40 seconds: +5 points
+- Delays beyond 40 seconds: -1 point for every additional 10 seconds (up to a maximum of -5 points).
+
 Winning:
 - Reach 75 points to win the game.
 
 Good luck and happy sushi making!`);
+}
 
     const gameArea = document.getElementById('game-area');
     gameArea.className = 'game-area-active'; // Apply a CSS class for consistent styling
